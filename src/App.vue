@@ -5,13 +5,14 @@
 </template>
 
 <script>
-  import page1 from './Page1';
-  import page2 from './Page2';
+  import Vue from 'vue'
+  import location from './Location';
+
 
   export default {
     data() {
       return {
-        pageStack: [page1]
+        pageStack: [location]
       }
     }
   }
