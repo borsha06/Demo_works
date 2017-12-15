@@ -9,12 +9,12 @@
     </button>
      </label>
 </div>
-                                    <ons-col width="100%">
+                           <ons-col width="100%">
                                   
-    <div class="restaurant" v-for="res in rest_lists">
-                                        
-                                        <p>    {{ res.post_title }}
-                                        </p>
+    <div class="location_button" v-for="res in rest_lists">
+                                        <button  @click="single_rest(res.ID)">
+                                          {{ res.post_title }}
+                                      </button>
                                     </div>
                                 </ons-col>
 
@@ -25,8 +25,10 @@
   import customToolbar from './CustomToolbar';
   import app from './App';
   import axios from 'axios'
+  import single_rest from './Single_rest';
 
   export default {
+    name :'restaurant_list',
     data ()
     {
       return {
@@ -45,35 +47,51 @@
             axios.get('http://clients.itsd.com.bd/table-cartel/wp-json/Table-cartel/v1/get-rest-by-loc/'+ this.data.id +'/')
             .then((resp) => {
               this.rest_lists  = resp.data
-              console.log('--------------------------------')
+              //console.log('--------------------------------')
 
-              console.log(this.rest_lists)
+              //console.log(this.rest_lists)
               this.loading = false
           })
           .catch((err) => {
 //           console.log(err)
           })
       },
+        single_rest(id) {
+            this.pageStack.push({
+                extends: single_rest,
+                   data() {
+                      return {
+                          data: {'id': id}
+                        }
+                    }
+                })
+            },
            
         pop(){
          this.pageStack.pop();
        },
      },
+      
+            
 
     props: ['pageStack'],
     components: { customToolbar }
   }
 </script>
 <style>
-  .restaurant{
-background: #fff;
-width: 100%;
-text-align: left;
-padding: 5px 3px;
-font-size: 15px;
-border-top: 1px solid #dedede;
-border-bottom: 1px solid #dedede;
-border-right: 1px solid #fff;
+.location_button{}
+  .location_button{
+    background: #fff;
+    width: 100%;
+    text-align: left;
+    padding: 4px 3px;
+    font-size: 15px;
+    border-right: 1px solid #fff;
+    border-bottom: bisque;
+  }
+.location_button button:hover{
+  background:#ddd;
 
 }
+
 </style>

@@ -1,9 +1,5 @@
 <template>
   <v-ons-page>
-
-
-
-
    <div class="tabbar tabbar--top tabbar--top-border">
   <label class="tabbar__item tabbar--top-border__item">
     <input type="radio" name="top-tabbar-b" checked="checked">
@@ -25,10 +21,6 @@
               </div>
 </ons-col>
 
-
-
-
-
   </v-ons-page>
 </template>
 
@@ -37,9 +29,8 @@
   import rest_list from './Rest_list';
   import axios from 'axios'
   export default {
-    name :'restaurant_list',
-    data ()
-    {
+    name :'location',
+  data () {
       return {
         rest : {}
       }
@@ -89,14 +80,13 @@
 
 .location_button{}
 .location_button button{
-background: #fff;
-width: 100%;
-text-align: left;
-padding: 9px 5px;
-font-size: 15px;
-border-top: 1px solid #dedede;
-border-bottom: 1px solid #dedede;
-border-right: 1px solid #fff;
+    background: #fff;
+    width: 100%;
+    text-align: left;
+    padding: 4px 3px;
+    font-size: 15px;
+    border-right: 1px solid #fff;
+    border-bottom: bisque;
 
 }
 

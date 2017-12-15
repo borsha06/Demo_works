@@ -8,7 +8,6 @@
   import Vue from 'vue'
   import location from './Location';
 
-
   export default {
     data() {
       return {
